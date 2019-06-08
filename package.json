@@ -1,0 +1,47 @@
+{
+  "name": "create-messenger-chatbot",
+  "version": "1.0.0",
+  "description": "A Starter Project For Building Facebook Messenger Chatbots",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "make": "rm -rf ./lib && babel ./src --out-dir ./lib --ignore */**/__tests__",
+    "test:unit": "jest --config jest.unit.config.js --watchAll",
+    "test:integration": "jest --config ./integration/jest.config.js --watchAll",
+    "start:dev": "concurrently \"yarn make --watch\" \"nodemon --exec 'node -r dotenv/config' ./lib/app dotenv_config_path=./.env\"",
+    "start": "node ./lib/app"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "lodash": "^4.17.11",
+    "node-server-logger": "^1.0.2",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "concurrently": "^4.1.0",
+    "dotenv": "^8.0.0",
+    "eslint": "^5.10.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.5.1",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.8.0",
+    "nock": "^10.0.6",
+    "nodemon": "^1.19.0"
+  }
+}

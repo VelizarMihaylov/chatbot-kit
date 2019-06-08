@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`buildMessages should build message array with id 1`] = `
+Array [
+  Object {
+    "id": "23461",
+    "text": "First message",
+  },
+  Object {
+    "id": "23461",
+    "text": "Second message",
+  },
+]
+`;

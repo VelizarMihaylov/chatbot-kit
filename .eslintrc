@@ -1,0 +1,47 @@
+{
+  "extends": [
+    "standard",
+    "plugin:jest/recommended"
+  ],
+  "parser": "babel-eslint",
+  "plugins": [
+    "jest"
+  ],
+  "rules": {
+      "no-multiple-empty-lines": [
+        "error",
+        {
+          "max": 2,
+          "maxEOF": 1
+        }
+      ],
+      "camelcase": [
+        "error",
+        {
+        "properties": "always",
+        "ignoreDestructuring": true,
+        "allow": [
+          "first_name",
+          "last_name",
+          "profile_pic",
+          "content_type",
+          "quick_reply"
+        ]
+        }
+      ],
+      "prefer-const": [
+        "error",
+        {
+          "destructuring": "any",
+          "ignoreReadBeforeAssign": false
+        }
+      ],
+    "env": {
+      "jest/globals": true
+    },
+    "globals": {
+      "fetch": true,
+      "Headers": true
+    }
+  }
+}
