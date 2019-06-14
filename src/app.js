@@ -2,7 +2,7 @@ import Koa from 'koa'
 import Router from 'koa-router'
 import bodyParser from 'koa-bodyparser'
 import messengerProfileApiMiddleware from './middleware/messenger-profile-api'
-import verbotly from './chatbots/verbotly'
+import verbotly from 'src/chatbots'
 import webhookGet from './middleware/webhook-get'
 import webhookPost from './middleware/webhook-post'
 

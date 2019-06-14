@@ -1,9 +1,9 @@
 import POST from './POST'
 import isArray from 'lodash/isArray'
 import assert from 'assert'
-import { forEach } from '../../../async-fp/forEach'
+import { asyncMap } from 'src/async-fp'
 
-export const send = (messagesArray = null || [
+export const send = async (messagesArray = null || [
   {
     recipient: {
       id: ''
@@ -18,7 +18,8 @@ export const send = (messagesArray = null || [
     Please make sure you are passing an array of messages.
     `
   )
-  forEach(messagesArray, POST)
+  const result = await asyncMap(messagesArray, POST)
+  return result
 }
 
 export default send

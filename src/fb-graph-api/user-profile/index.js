@@ -1,5 +1,16 @@
 import fetch from 'isomorphic-fetch'
+import fs from 'fs'
+import path from 'path'
 
+export const getConfig = async () => {
+  const configFilePath = `${path.resolve('./')}/botconfig.json`
+  const stream = await fs.createReadStream(configFilePath)
+  const data = await stream.on('data', (chunk) => {
+    return JSON.parse(chunk)
+  })
+
+  console.log('DATA', data)
+}
 export const getUserInfoDefinition = (fetch = async () => ({
   first_name: '',
   last_name: '',
