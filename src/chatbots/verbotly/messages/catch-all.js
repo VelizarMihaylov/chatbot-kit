@@ -13,8 +13,7 @@ const catchAll = message({
     seen,
     typingOn,
     textMessage({
-      text: `Sorry :first_name, I did not catch that.`,
-      withUserData: true
+      text: `Sorry :first_name, I did not catch that but I am writing this from AWS Lambda.`
     }),
     typingOff
   ]

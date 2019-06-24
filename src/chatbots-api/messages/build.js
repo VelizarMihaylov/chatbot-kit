@@ -1,4 +1,5 @@
 import getUserInfo from '../../fb-graph-api/user-profile'
+import { map } from 'src/async-fp'
 
 export const buildDefinition = getUserInfo => ({
   withUserData = false,
@@ -16,7 +17,7 @@ export const buildDefinition = getUserInfo => ({
     user = await getUserInfo(id)
   }
 
-  return Promise.all(messages.map(message => message(id, user)))
+  return map(messages, message => message(id, user))
 }
 
 const build = buildDefinition(getUserInfo)

@@ -1,4 +1,5 @@
 const webHookPost = chatBot => ctx => {
+  const { callback } = ctx
   const { request } = ctx
   const {
     body: {
@@ -14,10 +15,14 @@ const webHookPost = chatBot => ctx => {
       const webHookEvent = messaging[0]
       chatBot(webHookEvent)
     })
-    ctx.status = 200
-    ctx.body = 'EVENT_RECEIVED'
+    callback(null, {
+      statusCode: 200,
+      body: 'EVENT_RECEIVED'
+    })
   } else {
-    ctx.status = 404
+    callback(null, {
+      statusCode: 404
+    })
   }
 }
 

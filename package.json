@@ -8,10 +8,12 @@
     "make": "rm -rf ./lib && babel ./src --out-dir ./lib --ignore */**/__tests__",
     "test:unit": "jest --config jest.unit.config.js --watchAll",
     "test:integration": "jest --config ./integration/jest.config.js --watchAll",
-    "start:dev": "concurrently \"yarn make --watch\" \"nodemon --exec 'node -r dotenv/config' ./lib/app dotenv_config_path=./.env\"",
+    "start:dev": "concurrently \"yarn make --watch\" \"nodemon --exec 'node -r dotenv/config' ./index.dev.js dotenv_config_path=./.env\"",
     "start": "node ./lib/app"
   },
   "dependencies": {
+    "aws-serverless-koa": "^1.0.1",
+    "bunyan": "^1.8.12",
     "isomorphic-fetch": "^2.2.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",

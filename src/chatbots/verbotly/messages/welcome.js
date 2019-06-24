@@ -15,12 +15,13 @@ const welcome = message({
   messages: [
     seen,
     typingOn,
-    imageMessage({
-      url: 'https://www.alizila.com/wp-content/uploads/2018/08/shutterstock_677646532-992x558.jpg'
-    }),
+    // imageMessage({
+    //   url: 'https://functionaluistorage.s3.eu-west-2.amazonaws.com/images/random-patterns-with-bot.jpg',
+    //   isReusable: false
+    // }),
+    // typingOn,
     textMessage({
-      text: `Hi :first_name, nice to meet you! My name is Verbotly and I am a friendly Messenger chatbot.`,
-      withUserData: true
+      text: `Hi :first_name, nice to meet you! My name is Verbotly and I am a friendly Messenger chatbot.`
     }),
     typingOn,
     textMessage({
@@ -39,8 +40,7 @@ const welcome = message({
           title: 'Sure lets do this 👍',
           payload: 'AGREE_GET_STARTED'
         }
-      ],
-      withUserData: true
+      ]
     }),
     typingOff
   ]

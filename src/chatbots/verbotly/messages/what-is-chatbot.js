@@ -19,9 +19,11 @@ const whatIsChatbot = message({
             'This new user interface lets users interact with services and brands using their favorite messaging apps.\n' +
             'In many cases, bots are digital users within a popular messaging product, such as Facebook Messenger , yup that\'s me  ✋.\n'
     }),
+    typingOn,
     textMessage({
       text: ' Unlike most users though, I am powered by software rather than by a human, and I bring a product, a service, or a brand into a given messaging product via conversation.'
     }),
+    typingOn,
     quickReplies({
       text: 'Was that information useful to you :first_name',
       quickReplies: [

@@ -3,8 +3,10 @@ import isString from 'lodash/isString'
 import buildMessageText from './helpers/build-message-text'
 import { map } from 'src/async-fp'
 
-export const seen = (id) => {
+export const seen = (name, dependsOn) => (id) => {
   const obj = {
+    name,
+    dependsOn,
     recipient: {
       id: id
     },
@@ -13,7 +15,9 @@ export const seen = (id) => {
   return obj
 }
 
-export const typingOn = (id) => ({
+export const typingOn = (name, dependsOn) => (id) => ({
+  name,
+  dependsOn,
   recipient: {
     id: id
   },
@@ -47,10 +51,14 @@ export const imageMessage = ({
 
 export const textMessage = (
   {
+    name,
+    dependsOn,
     text
   }
 ) => async (id, user) => {
   return {
+    name,
+    dependsOn,
     recipient: {
       id
     },
@@ -86,6 +94,8 @@ export const optionsMessage = ({
 })
 
 export const quickReplies = ({
+  name,
+  dependsOn,
   text = '',
   quickReplies = [
     {
@@ -115,6 +125,8 @@ export const quickReplies = ({
   ))
 
   return {
+    name,
+    dependsOn,
     recipient: {
       id
     },
@@ -130,9 +142,11 @@ export const delay = timeOut => (id) => new Promise(resolve => setTimeout(() => 
 export const batch = (...messages) => async (id, user) => map(messages, message => message(id, user))
 
 export const batchWithActions = (...messages) => async (id, user) => {
-  const template = [
-    seen({ name: 'seen' }),
-    ...messages
-  ]
-  return map(template, message => message(id, user))
+  // const template = [
+  //   seen,
+  //   typingOn,
+  //   ...messages,
+  //   typingOff
+  // ]
+  return map(messages, message => message(id, user))
 }

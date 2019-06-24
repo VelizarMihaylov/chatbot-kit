@@ -4,11 +4,11 @@ import {
   multiArgumentPipe
 } from './pipe'
 import compose from './compose'
-import asyncMap from './map'
+import map from './map'
 
 export {
   forEach,
-  asyncMap,
+  map,
   singleArgumentPipe,
   multiArgumentPipe,
   compose

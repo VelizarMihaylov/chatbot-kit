@@ -21,6 +21,9 @@ router.get('/webhook', webhookGet)
 
 router.get('/update-messenger-profile', messengerProfileApiMiddleware)
 
-app.listen(3000)
+export {
+  verbotly,
+  webhookPost
+}
 
-console.log('bot is listening')
+export default app

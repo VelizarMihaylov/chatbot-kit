@@ -1,7 +1,11 @@
-import POST from './POST'
+import {
+  sendPOST,
+  batchPOST
+} from './POST'
+
 import isArray from 'lodash/isArray'
 import assert from 'assert'
-import { asyncMap } from 'src/async-fp'
+import { map } from 'src/async-fp'
 
 export const send = async (messagesArray = null || [
   {
@@ -18,7 +22,10 @@ export const send = async (messagesArray = null || [
     Please make sure you are passing an array of messages.
     `
   )
-  const result = await asyncMap(messagesArray, POST)
+  const result = await map(messagesArray, message => {
+    if (message.length) return batchPOST(message)
+    return sendPOST(message)
+  })
   return result
 }
 
