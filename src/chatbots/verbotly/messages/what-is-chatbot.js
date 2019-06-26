@@ -21,10 +21,14 @@ const whatIsChatbot = message({
     }),
     typingOn,
     textMessage({
+      name: 'reply_2',
+      dependsOn: 'reply_1',
       text: ' Unlike most users though, I am powered by software rather than by a human, and I bring a product, a service, or a brand into a given messaging product via conversation.'
     }),
     typingOn,
     quickReplies({
+      name: 'reply_3',
+      dependsOn: 'reply_2',
       text: 'Was that information useful to you :first_name',
       quickReplies: [
         {

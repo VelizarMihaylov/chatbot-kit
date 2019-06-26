@@ -47,18 +47,19 @@ export const batchPOSTDefinition = (fetch = () => { }, url = '', transformBody) 
   const batchRequestBody = requestBody.map(body => {
     const req = {
       method: 'POST',
-      'relative_url': `v2.6/me/messages`,
+      'relative_url': `v3.3/me/messages`,
       body: transformBody(body)
     }
+    console.log('TRANSFORM BODY', transformBody(body))
     return req
   })
   try {
     const req = await request.post('https://graph.facebook.com', (err, httpResponse, body) => {
       if (err) console.error('batch send error: ', err)
     })
-    const form = req.form()
-    form.append('access_token', `${process.env.PAGE_ACCESS_TOKEN}`)
-    form.append('batch', JSON.stringify(batchRequestBody))
+    const form = await req.form()
+    await form.append('access_token', `${process.env.PAGE_ACCESS_TOKEN}`)
+    await form.append('batch', JSON.stringify(batchRequestBody))
     return 'success'
   } catch (error) {
     console.log(`Failed posting request ${requestBody}: ${error}`)
@@ -66,6 +67,6 @@ export const batchPOSTDefinition = (fetch = () => { }, url = '', transformBody) 
   }
 }
 
-export const sendPOST = sendPOSTDefinition(fetch, `https://graph.facebook.com/v2.6/me/messages?access_token=${process.env.PAGE_ACCESS_TOKEN}`)
+export const sendPOST = sendPOSTDefinition(fetch, `https://graph.facebook.com/v3.3/me/messages?access_token=${process.env.PAGE_ACCESS_TOKEN}`)
 
-export const batchPOST = batchPOSTDefinition(fetch, `https://graph.facebook.com/v2.6/access_token=${process.env.PAGE_ACCESS_TOKEN}`, transformBody)
+export const batchPOST = batchPOSTDefinition(fetch, `https://graph.facebook.com/v3.3/access_token=${process.env.PAGE_ACCESS_TOKEN}`, transformBody)

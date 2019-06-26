@@ -4,11 +4,11 @@ import send from '../../../src/fb-graph-api/messages/send'
 describe('send', () => {
   beforeAll(() => {
     nock(`https://graph.facebook.com`)
-      .post(`/v2.6/me/messages?access_token=${process.env.PAGE_ACCESS_TOKEN}`)
+      .post(`/v3.3/me/messages?access_token=${process.env.PAGE_ACCESS_TOKEN}`)
       .reply('200', {
         status: 'success'
       })
-      .post(`/v2.6/me/messages?access_token=${process.env.PAGE_ACCESS_TOKEN}`)
+      .post(`/v3.3/me/messages?access_token=${process.env.PAGE_ACCESS_TOKEN}`)
       .reply('200', {
         status: 'success'
       })

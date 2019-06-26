@@ -38,7 +38,7 @@ const messengerProfileApi = fetch => async ctx => {
     ]
   }
 
-  const response = await fetch(`https://graph.facebook.com/v2.6/me/messenger_profile?access_token=${process.env.PAGE_ACCESS_TOKEN}`, {
+  const response = await fetch(`https://graph.facebook.com/v3.3/me/messenger_profile?access_token=${process.env.PAGE_ACCESS_TOKEN}`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

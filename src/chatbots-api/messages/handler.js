@@ -1,12 +1,12 @@
 import { map } from 'src/async-fp'
 import flatten from 'lodash/flatten'
 
-export const messageHandlerDefinition = map => (replies, catchAll) => webHookEvent => {
+export const messageHandlerDefinition = map => (replies, catchAll) => async webHookEvent => {
   // @TODO Decide how to manage delivery in the webHookEvent
   // Should it be enabled at all if yes should we manage it per message base etc.
   // For now I am just returning null to avoid unnecessary calls
   if (webHookEvent.delivery) return null
-  const sendReply = map(replies, reply => reply({
+  const sendReply = await map(replies, reply => reply({
     sender: {
       ...webHookEvent.sender
     },

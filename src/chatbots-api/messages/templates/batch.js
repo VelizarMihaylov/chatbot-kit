@@ -3,7 +3,7 @@ import isString from 'lodash/isString'
 import buildMessageText from './helpers/build-message-text'
 import { map } from 'src/async-fp'
 
-export const seen = (name, dependsOn) => (id) => {
+export const seen = ({ name, dependsOn }) => (id) => {
   const obj = {
     name,
     dependsOn,
@@ -15,7 +15,7 @@ export const seen = (name, dependsOn) => (id) => {
   return obj
 }
 
-export const typingOn = (name, dependsOn) => (id) => ({
+export const typingOn = ({ name, dependsOn }) => (id) => ({
   name,
   dependsOn,
   recipient: {
@@ -24,7 +24,9 @@ export const typingOn = (name, dependsOn) => (id) => ({
   sender_action: 'typing_on'
 })
 
-export const typingOff = (id) => ({
+export const typingOff = ({ name, dependsOn }) => (id) => ({
+  name,
+  dependsOn,
   recipient: {
     id: id
   },

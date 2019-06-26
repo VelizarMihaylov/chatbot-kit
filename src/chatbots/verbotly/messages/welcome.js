@@ -21,7 +21,7 @@ const welcome = message({
     // }),
     // typingOn,
     textMessage({
-      text: `Hi :first_name, nice to meet you! My name is Verbotly and I am a friendly Messenger chatbot.`
+      text: `Hi :first_name, dick nice to meet you! My name is Verbotly and I am a friendly Messenger chatbot.`
     }),
     typingOn,
     textMessage({
