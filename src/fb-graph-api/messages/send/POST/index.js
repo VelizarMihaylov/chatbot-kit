@@ -1,6 +1,13 @@
 import fetch from 'isomorphic-fetch'
 import request from 'request'
 import isArray from 'lodash/isArray'
+import { getConfig } from 'src/config'
+
+const {
+  apiVersion
+} = getConfig()
+
+const graphApiUrl = `https://graph.facebook.com/${apiVersion}/me/messages?access_token=${process.env.PAGE_ACCESS_TOKEN}`
 
 export const sendPOSTDefinition = (fetch = () => {}, url = '') => async (requestBody = {
   recipient: {
@@ -67,6 +74,6 @@ export const batchPOSTDefinition = (fetch = () => { }, url = '', transformBody) 
   }
 }
 
-export const sendPOST = sendPOSTDefinition(fetch, `https://graph.facebook.com/v3.3/me/messages?access_token=${process.env.PAGE_ACCESS_TOKEN}`)
+export const sendPOST = sendPOSTDefinition(fetch, graphApiUrl)
 
-export const batchPOST = batchPOSTDefinition(fetch, `https://graph.facebook.com/v3.3/access_token=${process.env.PAGE_ACCESS_TOKEN}`, transformBody)
+export const batchPOST = batchPOSTDefinition(fetch, graphApiUrl, transformBody)

@@ -5,12 +5,14 @@ import messengerProfileApiMiddleware from './middleware/messenger-profile-api'
 import verbotly from 'src/chatbots'
 import webhookGet from './middleware/webhook-get'
 import webhookPost from './middleware/webhook-post'
+import { getConfig } from 'src/config'
 
 const router = new Router()
 const app = new Koa()
-
-const webhookUrl = process.env.WEBHOOK_URL
-const profileApiUrl = process.env.PROFILE_API_URL
+const {
+  webhookEndpoint,
+  messengerProfileEndpoint
+} = getConfig()
 
 app
   .use(router.routes())
@@ -18,11 +20,11 @@ app
 
 router.use(bodyParser())
 
-router.post('/webhook', webhookPost(verbotly))
+router.post(webhookEndpoint, webhookPost(verbotly))
 
-router.get('/webhook', webhookGet)
+router.get(webhookEndpoint, webhookGet)
 
-router.get('/update-messenger-profile', messengerProfileApiMiddleware)
+router.get(messengerProfileEndpoint, messengerProfileApiMiddleware)
 
 export {
   verbotly,

@@ -1,6 +1,11 @@
 import fetch from 'isomorphic-fetch'
+import { getConfig } from 'src/config'
 
-const messengerProfileApi = fetch => async ctx => {
+const messengerProfileApi = (fetch, getConfig) => async ctx => {
+  const {
+    apiVersion
+  } = getConfig()
+
   const requestBody = {
     'get_started': {
       payload: 'GET_STARTED'
@@ -38,7 +43,7 @@ const messengerProfileApi = fetch => async ctx => {
     ]
   }
 
-  const response = await fetch(`https://graph.facebook.com/v3.3/me/messenger_profile?access_token=${process.env.PAGE_ACCESS_TOKEN}`, {
+  const response = await fetch(`https://graph.facebook.com/${apiVersion}/me/messenger_profile?access_token=${process.env.PAGE_ACCESS_TOKEN}`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -54,6 +59,6 @@ const messengerProfileApi = fetch => async ctx => {
   }
 }
 
-const messengerProfileApiMiddleware = messengerProfileApi(fetch)
+const messengerProfileApiMiddleware = messengerProfileApi(fetch, getConfig)
 
 export default messengerProfileApiMiddleware
