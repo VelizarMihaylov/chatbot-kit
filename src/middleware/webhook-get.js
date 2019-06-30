@@ -1,4 +1,5 @@
 const webhookGet = ctx => {
+  const { callback } = ctx
   const {
     request: {
       query
@@ -11,10 +12,23 @@ const webhookGet = ctx => {
 
   if (mode && verifyToken) {
     if (mode === 'subscribe') {
-      ctx.status = 200
-      ctx.body = challenge
+      if (process.env.NODE_ENV === 'development') {
+        ctx.status = 200
+        ctx.body = challenge
+      } else {
+        callback(null, {
+          statusCode: 200,
+          body: challenge
+        })
+      }
     } else {
-      ctx.status = 403
+      if (process.env.NODE_ENV === 'development') {
+        ctx.status = 403
+      } else {
+        callback(null, {
+          statusCode: 403
+        })
+      }
     }
   }
 }

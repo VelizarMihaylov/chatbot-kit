@@ -1,7 +1,7 @@
-const app = require('./lib/app').default
+const app = require('./lib/app')
 
-const PORT = process.env.PORT || 3000
+const chatbotPort = process.env.CHATBOT_PORT || 3000
 
-app.listen(PORT)
+app.listen(chatbotPort)
 
-console.log(`bot is listening on PORT ${PORT}`)
+console.log(`bot is listening on PORT ${chatbotPort}`)

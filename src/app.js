@@ -9,6 +9,9 @@ import webhookPost from './middleware/webhook-post'
 const router = new Router()
 const app = new Koa()
 
+const webhookUrl = process.env.WEBHOOK_URL
+const profileApiUrl = process.env.PROFILE_API_URL
+
 app
   .use(router.routes())
   .use(router.allowedMethods())
