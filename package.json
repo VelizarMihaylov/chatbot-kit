@@ -1,7 +1,7 @@
 {
-  "name": "chatbot-kit",
-  "version": "0.0.1",
-  "description": "NPM package For Building Facebook Messenger Chatbots",
+  "name": "chatbot-dialog-kit",
+  "version": "1.0.0",
+  "description": "Build Facebook Messenger Conversations",
   "license": "MIT",
   "main": "lib/index.js",
   "bin": {
