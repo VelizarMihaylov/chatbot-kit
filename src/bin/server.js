@@ -1,4 +1,4 @@
-import app from './app'
+import app from '../app'
 import { getConfig } from 'src/config'
 
 const { port } = getConfig()

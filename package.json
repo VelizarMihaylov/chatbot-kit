@@ -1,14 +1,17 @@
 {
-  "name": "create-messenger-chatbot",
-  "version": "1.0.0",
-  "description": "A Starter Project For Building Facebook Messenger Chatbots",
-  "main": "index.js",
+  "name": "chatbot-kit",
+  "version": "0.0.1",
+  "description": "NPM package For Building Facebook Messenger Chatbots",
   "license": "MIT",
+  "main": "lib/index.js",
+  "bin": {
+    "serve-chatbot": "./lib/bin/server.js"
+  },
   "scripts": {
     "make": "rm -rf ./lib && babel ./src --out-dir ./lib --ignore */**/__tests__",
     "test:unit": "jest --config jest.unit.config.js --watchAll",
     "test:integration": "jest --config ./integration/jest.config.js --watchAll",
-    "start:dev": "concurrently \"yarn make --watch\" \"nodemon --exec 'node -r dotenv/config' ./lib/server.js dotenv_config_path=./.env\"",
+    "start:dev": "concurrently \"yarn make --watch\" \"nodemon --exec 'node -r dotenv/config' ./lib/bin/server.js dotenv_config_path=./.env\"",
     "start": "node ./lib/app"
   },
   "dependencies": {
