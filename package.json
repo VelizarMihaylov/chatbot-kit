@@ -1,6 +1,6 @@
 {
   "name": "chatbot-dialog-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Build Facebook Messenger Conversations",
   "license": "MIT",
   "main": "lib/index.js",
